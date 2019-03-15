@@ -1,0 +1,14 @@
+<div class="comment">
+  <p class="comment-content"><%= comment.content %></p>
+  <p class="comment-posted-by">Posted by <%= comment.user.username %> <%= time_ago_in_words(@message.created_at) %> ago </p>
+
+  <% if user_signed_in? %>
+    <% if can? :update, comment %>
+      <%= link_to '编辑', edit_message_comment_path(comment.message, comment), class: "btn btn-primary"  %>
+    <% end  %>
+    <% if can? :destroy, comment  %>
+      <%= link_to '删除', message_comment_path(comment.message, comment), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary"  %>
+    <% end  %>
+  <% end %>
+</div>
+

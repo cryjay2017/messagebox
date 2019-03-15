@@ -1,0 +1,10 @@
+<%= form_for(@category) do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="active">
+    <%= f.submit "Create Categroy", :disable_with => 'Create Categroying...' %>
+  </div>  
+<% end %>
+  

@@ -1,0 +1,65 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">切换导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to '博客信息', root_path, class: "navbar-brand" %>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <% if user_signed_in? %>
+          <li><%= link_to '创建信息', new_message_path %></li>
+        <% end  %>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">列表分类<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <% Category.all.each do |category|  %>
+              <li class="<%= 'active' if params[:category] == category.name %>">
+                <%= link_to category.name, messages_path(category: category.name), class: "btn btn-default" %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+        <li><%= link_to "关于我", about_path %><li>
+      </ul>
+      
+      <%= form_tag search_messages_path, method: :get, class: "navbar-form navbar-left", role:"search" do %>
+        <%= text_field_tag :search, params[:search], class: "form-control" %>
+        <%= submit_tag "search", name: nil, class: "btn btn-default" %>
+      <% end %>
+      
+      <ul class="nav navbar-nav navbar-right"> 
+        <% if user_signed_in? %>
+          <li><a>欢迎, <%= current_user.username %></a></li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <span class="user-icon" ><i class="glyphicon glyphicon-log-out"></i></span>
+              <span class="user-out">登出</span>
+            <% end %>
+          </li>
+          <li><%= link_to "修改密码", edit_registration_path(:user) %></li>
+        <% else  %>
+          <li>
+            <%= link_to new_user_session_path do %>
+              <span class="user-icon" ><i class="glyphicon glyphicon-log-in"></i></span>
+              <span class="user-logn">登录</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path do %>
+              <span class="user-icon" ><i class="glyphicon glyphicon-user"></i></span>
+              <span class="user-sign">注册</span>
+            <% end %>
+          </li>
+        <% end  %>
+      </ul> 
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

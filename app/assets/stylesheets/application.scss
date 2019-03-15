@@ -1,0 +1,195 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+body{
+  padding-top: 30px;
+  padding-bottom: 50px;
+  font-family: "Times New Roman", arial;
+  background-color: #f4f4f2;
+}
+/* button style */
+.message{
+  box-sizing: border-box;
+  height: 350px;
+  background-color: #ffffff;
+  border: 1px solid #0a8fd5;
+  color: #333;
+  font-weight: 300;
+  margin-bottom: 30px;
+	.message-index{
+		height: 250px;
+		width: 260px;
+	}
+  .message-title{
+    font-size: 20px;
+    font-family: "Times New Roman", sans-serif;
+    font-weight: 300;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .text-center{
+  	color: #333;
+  	padding-bottom: 10px;
+  }
+}
+
+.btn-custom{
+  background-color: #f4f4f2;  /* 背景色 */
+  color: #333;    /* 为不同元素设置文本颜色 */
+  font-family:"Times New Roman", sans-serif; /* 设置字体*/
+  font-size: 15px;    /* 字体的大小 */
+  font-weight: 300;   /* 字体的粗细 */
+  padding: 5px;      /* 元素边框与元素内容之间的空间 设置所有当前或者指定元素内边距属性*/
+  border-radius: 15px; /* 设置元素边框的圆角 */
+  border: 1px solid #0a8fd5;
+  text-align: center;
+  &:hover{
+    color: #383838;
+    transition: 0.5s;  /* 当鼠标移动某个元素上的时间当前元素就会发生变化  */
+    background-color: #f4f4f2;
+    text-decoration: none;   /* 设置元素文本修饰 */
+  }
+}
+.btn:hover{
+  transition: 0.5s;
+  color: #383838;
+  background-color: #f4f4f2;
+}
+.message-show{
+  box-sizing: border-box;
+  border-bottom: 1px solid #000000;
+  background-color: #ffffff;
+  padding: 10px;
+  color: #333;
+  font-family: "Times New Roman", sans-serif;
+  font-weight: 300;
+  padding-bottom: 20px;
+  margin-bottom: 50px;
+  .image-show{
+  	margin-bottom: 10px;
+  }
+  h2 {
+    margin-top: 0;
+    font-size: 25px;
+    text-align: center;
+  }
+  .message-posted-by{
+    color: #333;
+    font-size: 15px;
+    text-align: center;
+  }
+  .message-content{
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 50px;
+    text-indent: 20px;
+  	letter-spacing: 1px;
+  }
+  .reply-to-mes{
+    margin-top: 50px;
+  }
+}
+
+.comment{
+  border-bottom: 1px solid #fff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  .comment-content{
+    font-size: 18px;
+    text-indent: 20px;	
+  }
+  .comment-posted-by {
+    color: #333;
+    font-size: 16px;
+  }
+  .links {
+    margin-top: 15px;
+    a {
+      color: #0a8fd5;
+      margin-right: 15px;
+    }
+  }
+  .form-control{
+    font-family: "Times New Roman", sans-serif;
+  }
+}
+.about-me{
+	font-family: "Times New Roman", sans-serif;
+	background-color: #ffffff; 
+	margin-bottom: 50px;
+	padding: 10px;
+	.about-header{
+		padding: 10px;
+		text-align: center;		
+		.about-image{
+			margin-bottom: 10px;
+			padding-bottom: 10px;	
+		}
+		.about-name{
+			color: #333;
+			font-size: 20px;
+			padding-left: 20px;
+			font-family: "Times New Roman", sans-serif;
+			border-bottom: 1px solid #800080;
+		}	
+	}
+	.about-body{
+		padding: 10px;	
+		.about-title{
+			color: #333;
+			text-align: center;
+		}
+		.about-content{
+			font-size: 18px;
+			text-indent: 30px;
+			p {
+				padding: 10px 0px;
+				margin-bottom: 10px; 
+			}
+			h3 {
+				text-align: center;
+				border-bottom: 1px solid #800080;
+			}
+			ul{
+				list-style-type: none;
+				li{
+					font-size: 1.2em;
+					font-height: 10px;
+				}
+			}
+		}
+	}
+}
+.new-message{
+	margin-bottom: 30px;
+}
+.edit-message{
+	margin-bottom: 50px;
+}
+.message-footer{
+  color: #999;
+  font-size: 15px;
+  text-align: center;
+  background-color: black;
+  border-top: 1px solid #e5e5e5;
+	.message-footer p:last-child {
+  	margin-bottom: 0;
+	}
+}	 

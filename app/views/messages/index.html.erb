@@ -1,0 +1,17 @@
+<% @messages.each do |message| %>
+  <div class="col-md-3">
+    <div class="message">
+      <% if message.pictures.first %>
+        <%= link_to message_path(message) do %>
+          <%= image_tag message.pictures.first.image.url(:medium), class: "img-responsive message-index" %>
+        <% end %>
+      <% end %>
+      <h1 class="message-title"><%= message.title %></h1>
+      <div class="text-center"><%= message.category.name %></div>
+    </div>   
+  </div>
+  <div class="text-center">
+    <%= will_paginate @messages, prev_label: '<<上一页', next_label: '下一页>>', renderer: BootstrapPagination::Rails %>
+  </div> 
+<% end %>
+

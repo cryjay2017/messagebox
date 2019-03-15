@@ -1,0 +1,30 @@
+<%= form_for(@message, html: { multipart: true }) do |f| %>
+  <div class="field">
+    <%= f.label :title, "标题" %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content, "内容" %><br>
+    <%= f.text_area :content, rows: 5, cols: 100, placeholder: "写一些内容......" %>
+  </div>
+  <br />
+  <div class="field">
+    <%= select_tag(:category_id, options_for_select(@categories), prompt: "请选择一个类别") %>
+  </div>
+  <br />
+  
+  <div class="field"> 
+    <%= f.fields_for :pictures do |picture|%>
+      <div class="picture-field">
+        <%= picture.label :image, "选择图片上传" %>
+        <%= picture.file_field :image %>
+      </div>
+    <% end %>
+  </div>
+  
+
+  <br />
+  <div class="actions">
+    <%= f.submit "创建信息" %>
+  </div>
+<% end %>

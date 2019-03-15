@@ -1,0 +1,41 @@
+<div class="col-md-8 col-md-offset-2">
+  <div class="message-show">
+    <h2><%= @message.title %><br></h2>
+    <p class="message-posted-by">由 <%= @message.user.username %> 在 <%= time_ago_in_words(@message.created_at) %> 之前发表的 </p>
+    <% unless @message.pictures.blank? %>
+      <% @message.pictures.each do |p| %>
+        <%= image_tag p.image.url(:thumb), class: "image-show center-block" %>
+      <% end %>
+    <% end %> 
+    <p class="message-content"><%= @message.content %></p><br>
+    <div class="text-center">
+      <%= link_to like_message_path(@message), method: :get, class: "btn btn-primary" do %>
+        <span class="icon"><i class="glyphicon glyphicon-thumbs-up"></i></span>
+        <span class="like-count"><%= pluralize(@message.get_likes.size, "Like") %></span>
+      <% end %>
+      <%= link_to unlike_message_path(@message), method: :get, class: "btn btn-primary" do %>
+        <span class="icon"><i class="glyphicon glyphicon-thumbs-down"></i></span>
+        <span class="unlike-count"><%= pluralize(@message.get_dislikes.size, "Dislike") %></span>
+      <% end %>
+    </div>
+    
+    <h1><%= pluralize(@message.comments.count, "Comment") %></h1>
+    <h3>评论:</h3>
+    <%= render @message.comments  %>
+
+    <h3 class="reply-to-mes">回复信息:</h3>
+    <%= render 'comments/form' %>
+    
+    <div class="links btn-group">
+      <%= link_to '返回', root_path, class: "btn btn-primary" %>
+      <% if user_signed_in? %>
+        <% if can? :update, @message %>
+          <%= link_to '编辑', edit_message_path(@message), class: "btn btn-primary" %>
+        <% end  %>
+        <% if can? :destroy, @message %>
+          <%= link_to '删除', message_path(@message), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-primary"  %>
+        <% end %>
+      <% end %>
+    </div> 
+  </div> 
+</div>
